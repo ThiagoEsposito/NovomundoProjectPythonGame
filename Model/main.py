@@ -1,2 +1,3 @@
-print('hello world! lets go!! god will blessed')
-
+from code.Game import Game
+game = Game()
+game.run()
