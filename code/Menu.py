@@ -13,16 +13,16 @@ class Menu:
         self.window: Surface = window
         self.surf = pygame.image.load('../Model/backgroundmenu1.png').convert_alpha()
         self.rect: Rect = self.surf.get_rect(left=0, top=0)
-
+        self.menu_option=0
     def run(self):
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(75, "NOVO", (COLOR_ORANGE), (WIN_WIDTH / 2, 190))
             self.menu_text(75, "MUNDO", (COLOR_ORANGE), (WIN_WIDTH / 2, 250))
-            menu_option=0
+
 
             for i in range(len(MENU_OPTIONS)):
-                if i == menu_option:
+                if i == self.menu_option:
                     self.menu_text(40, MENU_OPTIONS[i], COLOR_YELLOW, (WIN_WIDTH / 2, 350 + 60 * i))
                 else:
                     self.menu_text(40, MENU_OPTIONS[i], COLOR_PINK, (WIN_WIDTH / 2, 350 + 60 * i))
@@ -39,15 +39,15 @@ class Menu:
                 #para rolar no menu
                 if event.type == pygame.KEYDOWN: #Testar se alguma tecla foi pressionada
                     if event.key == pygame.K_DOWN: #Se a tecla que for pressionada for set para baixo
-                        if menu_option < len(MENU_OPTIONS) - 1:
-                            menu_option += 1
+                        if self.menu_option < len(MENU_OPTIONS) - 1:
+                            self.menu_option += 1
                         else:
-                            menu_option = 0
+                            self.menu_option = 0
                     if event.key == pygame.K_UP: #Se a tecla que for pressionada for a seta para cima
-                        if menu_option > 0:
-                            menu_option -= 1
+                        if self.menu_option > 0:
+                            self.menu_option -= 1
                         else:
-                            menu_option = len(MENU_OPTIONS) - 1
+                            self.menu_option = len(MENU_OPTIONS) - 1
 
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
