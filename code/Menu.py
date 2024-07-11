@@ -1,9 +1,11 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
+import sys
+
 import pygame.image
 from pygame import Surface, Rect
 from pygame.font import Font
-from code.const import WIN_WIDTH
+from code.const import WIN_WIDTH, COLOR_ORANGE, COLOR_PINK, MENU_OPTIONS, COLOR_WHITE, COLOR_YELLOW
 
 
 class Menu:
@@ -15,15 +17,38 @@ class Menu:
     def run(self):
         while True:
             self.window.blit(source=self.surf, dest=self.rect)
-            self.menu_text(50, "Mountain", (255, 128, 0), (WIN_WIDTH / 2, 70))
-            pygame.display.flip()
+            self.menu_text(75, "NOVO", (COLOR_ORANGE), (WIN_WIDTH / 2, 190))
+            self.menu_text(75, "MUNDO", (COLOR_ORANGE), (WIN_WIDTH / 2, 250))
+            menu_option=0
 
+            for i in range(len(MENU_OPTIONS)):
+                if i == menu_option:
+                    self.menu_text(40, MENU_OPTIONS[i], COLOR_YELLOW, (WIN_WIDTH / 2, 350 + 60 * i))
+                else:
+                    self.menu_text(40, MENU_OPTIONS[i], COLOR_PINK, (WIN_WIDTH / 2, 350 + 60 * i))
+
+            pygame.display.flip()
+            #Abaixo serve para conseguir fechar o jogo...
             for event in pygame.event.get():  # quando receber um evento(quando houver ->get<-)
                 if event.type == pygame.QUIT:  # se o tipo do evento for quit (sair) vai acontecer:
                     pygame.quit()  # vai fechar a tela e finalizar o jogo também
-                    quit()  # a tela não fecha sozinha e se fechar não finaliza. # Vou criar um evento para quando eu fechar a tela, finalize o game.
-                pressed_key = pygame.key.get_pressed()
-        pass
+                    sys.exit()
+                    #quit()  # a tela não fecha sozinha e se fechar não finaliza. # Vou criar um evento para quando eu fechar a tela, finalize o game.
+                #pressed_key = pygame.key.get_pressed()
+
+                #para rolar no menu
+                if event.type == pygame.KEYDOWN: #Testar se alguma tecla foi pressionada
+                    if event.key == pygame.K_DOWN: #Se a tecla que for pressionada for set para baixo
+                        if menu_option < len(MENU_OPTIONS) - 1:
+                            menu_option += 1
+                        else:
+                            menu_option = 0
+                    if event.key == pygame.K_UP: #Se a tecla que for pressionada for a seta para cima
+                        if menu_option > 0:
+                            menu_option -= 1
+                        else:
+                            menu_option = len(MENU_OPTIONS) - 1
+
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
