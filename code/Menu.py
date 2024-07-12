@@ -16,18 +16,19 @@ class Menu:
         self.menu_option=0
     def run(self):
         while True:
+            #TITULO DO JOGO
             self.window.blit(source=self.surf, dest=self.rect)
             self.menu_text(75, "NOVO", (COLOR_ORANGE), (WIN_WIDTH / 2, 190))
             self.menu_text(75, "MUNDO", (COLOR_ORANGE), (WIN_WIDTH / 2, 250))
 
-
+            #DESENHAR MENU
             for i in range(len(MENU_OPTIONS)):
                 if i == self.menu_option:
                     self.menu_text(40, MENU_OPTIONS[i], COLOR_YELLOW, (WIN_WIDTH / 2, 350 + 60 * i))
                 else:
                     self.menu_text(40, MENU_OPTIONS[i], COLOR_PINK, (WIN_WIDTH / 2, 350 + 60 * i))
 
-            pygame.display.flip()
+
             #Abaixo serve para conseguir fechar o jogo...
             for event in pygame.event.get():  # quando receber um evento(quando houver ->get<-)
                 if event.type == pygame.QUIT:  # se o tipo do evento for quit (sair) vai acontecer:
@@ -36,7 +37,7 @@ class Menu:
                     #quit()  # a tela não fecha sozinha e se fechar não finaliza. # Vou criar um evento para quando eu fechar a tela, finalize o game.
                 #pressed_key = pygame.key.get_pressed()
 
-                #para rolar no menu
+                #VERIFICAR EVENTOS
                 if event.type == pygame.KEYDOWN: #Testar se alguma tecla foi pressionada
                     if event.key == pygame.K_DOWN: #Se a tecla que for pressionada for set para baixo
                         if self.menu_option < len(MENU_OPTIONS) - 1:
@@ -48,7 +49,9 @@ class Menu:
                             self.menu_option -= 1
                         else:
                             self.menu_option = len(MENU_OPTIONS) - 1
-
+                    if event.key == pygame.K_RETURN:
+                        return MENU_OPTIONS[self.menu_option]
+                pygame.display.flip()  # desenhar na tela
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)

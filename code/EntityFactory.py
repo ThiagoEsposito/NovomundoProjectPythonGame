@@ -1,10 +1,13 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
+from code.background import background
+
 
 class EntityFactory:
-    def __init__(self):
-        pass
 
-    def get_entity(self, enity_type):
-        pass
+    @staticmethod
+    def get_entity(entity_name: str, position: tuple):
+        match entity_name:
+            case 'estrelafloresta':
+                return background(f'estrelafloresta', position)
 

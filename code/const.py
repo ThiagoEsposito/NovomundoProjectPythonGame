@@ -7,6 +7,8 @@ COLOR_YELLOW = (255,255,128)
 
 #M -> MENU
 MENU_OPTIONS = ("INICIO",
+                "INICIO MULTIPLAYER",
+                "ESCOLHER PERSONAGEM",
                 "OPTIONS",
                 "EXIT")
 

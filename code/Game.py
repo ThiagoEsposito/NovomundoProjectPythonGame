@@ -1,10 +1,13 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
+import sys
+
 import pygame as pygame
 from pygame.ftfont import Font
 
+from code.Level import Level
 from code.Menu import Menu
-from code.const import WIN_HEIGHT, WIN_WIDTH
+from code.const import WIN_HEIGHT, WIN_WIDTH, MENU_OPTIONS
 
 
 class Game:
@@ -16,13 +19,13 @@ class Game:
     def run(self):
         while True:
             menu = Menu(self.window)
-            menu.run()
-
-            for event in pygame.event.get():  # quando receber um evento(quando houver ->get<-)
-                if event.type == pygame.QUIT:  # se o tipo do evento for quit (sair) vai acontecer:
-                    pygame.quit()  # vai fechar a tela e finalizar o jogo também
-                    quit()  # a tela não fecha sozinha e se fechar não finaliza. # Vou criar um evento para quando eu fechar a tela, finalize o game.
-                pressed_key = pygame.key.get_pressed()
-            pass
+            menu_return = menu.run()
+            if menu_return in [MENU_OPTIONS[0], MENU_OPTIONS[1],MENU_OPTIONS[2], MENU_OPTIONS[3]]:
+                level = Level(self.window), "Fase 1", menu_return
+                level_return = level.run()
+                pass
+            else:
+                pygame.quit()
+                sys.exit()
 
 
