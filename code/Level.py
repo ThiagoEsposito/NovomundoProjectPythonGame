@@ -17,7 +17,11 @@ class Level:
         self.Entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('florestalevel1part', (0, 0)))
     def run(self):
+        pygame.mixer_music.load(f'asset/{self.name}.mp3') #musica da fase1
+        pygame.mixer_music.play(-1)
+        clock = pygame.time.Clock() #vou criar o clock para definir o fps
         while True:
+            clock.tick(60) #defini o tempo de rodagem (FPS) em clock.tick{x}, para não passar disso
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()

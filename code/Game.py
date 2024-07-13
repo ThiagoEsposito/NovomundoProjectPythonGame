@@ -21,7 +21,7 @@ class Game:
             menu = Menu(self.window)
             menu_return = menu.run()
             if menu_return in [MENU_OPTIONS[0], MENU_OPTIONS[1],MENU_OPTIONS[2], MENU_OPTIONS[3]]:
-                level = Level(self.window, "Fase 1", menu_return)
+                level = Level(self.window, "florestalevel1part", menu_return)
                 level_return = level.run()
                 pass
             else:
