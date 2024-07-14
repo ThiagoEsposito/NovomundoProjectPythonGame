@@ -15,16 +15,17 @@ MENU_OPTIONS = ("INICIO",
 #E  -> ENTITY
 ENTITY_SPEED = {'florestalevel1part0': 16,
                 'florestalevel1part1': 0,
-                'florestalevel1part2': 10,
+                'florestalevel1part2': 50,
                 'florestalevel1part3': 0,
                 'florestalevel1part4': 0,
                 'florestalevel1part5': 0,
                 'florestalevel1part6': 0,
                 'florestalevel1part7': 0,
+                'player1': 20
                 }
 
 
 
 #W --> TAMANHOS (WIDTH e HEIGHT)
 WIN_WIDTH = 1200
-WIN_HEIGHT = 710
+WIN_HEIGHT = 700
