@@ -7,6 +7,7 @@ from pygame import Surface
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
+from code.const import COLOR_WHITE
 
 
 class Level:
@@ -29,7 +30,8 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf,
                                  dest=ent.rect)  # aqui eu desenho as entidades ex: background, imagens em geral
-                # self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, 10)) #colocar o cpf na tela do jogo.
+                #self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, 10)) #colocar o cpf na tela do jogo.
+                print(clock.get_fps())
                 ent.move()
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:

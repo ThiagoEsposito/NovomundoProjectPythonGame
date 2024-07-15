@@ -17,5 +17,6 @@ class EntityFactory:
                     list_bg.append(background(f'florestalevel1part{i}', (WIN_WIDTH, 0)))
                 return list_bg
             case 'player1': #esse case é do personagem
-                return Player('player1', (5, 550))
-
+               return Player('player1', (5, 550))
+            #case 'player1':  # Esse case é do personagem
+                #return Player('player1', position)  # Usar a posição passada como argumento
