@@ -18,5 +18,7 @@ class EntityFactory:
                 return list_bg
             case 'player1': #esse case é do personagem
                return Player('player1', (5, 550))
+            case 'player2':  # esse case é do personagem
+                return Player('player2', (55, 550))
             #case 'player1':  # Esse case é do personagem
                 #return Player('player1', position)  # Usar a posição passada como argumento

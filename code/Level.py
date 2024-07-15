@@ -7,7 +7,7 @@ from pygame import Surface
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
-from code.const import COLOR_WHITE
+from code.const import COLOR_WHITE, MENU_OPTIONS
 
 
 class Level:
@@ -20,10 +20,16 @@ class Level:
         self.Entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('florestalevel1part', (0, 0)))
         self.entity_list.append(EntityFactory.get_entity('player1', (0,0)))
+        if menu_option in [MENU_OPTIONS[1], MENU_OPTIONS[2]]:
+            self.entity_list.append(EntityFactory.get_entity('player2', (50, 50)))
+
+        # Carregar a música fora do loop principal
+        pygame.mixer_music.load(f'asset/{self.name}.mp3')
+        pygame.mixer_music.play(-1)
 
     def run(self):
-        pygame.mixer_music.load(f'asset/{self.name}.mp3')  # musica da fase1
-        pygame.mixer_music.play(-1)
+        #pygame.mixer_music.load(f'asset/{self.name}.mp3')  # musica da fase1
+        #pygame.mixer_music.play(-1)
         clock = pygame.time.Clock()  # vou criar o clock para definir o fps
         while True:
             clock.tick(60)  # defini o tempo de rodagem (FPS) em clock.tick{x}, para não passar disso

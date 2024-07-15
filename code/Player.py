@@ -3,7 +3,7 @@
 import pygame.key
 
 from code.Entity import Entity
-from code.const import ENTITY_SPEED
+from code.const import ENTITY_SPEED, WIN_WIDTH
 
 
 class Player(Entity):
