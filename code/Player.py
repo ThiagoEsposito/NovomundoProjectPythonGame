@@ -3,7 +3,7 @@
 import pygame.key
 
 from code.Entity import Entity
-from code.const import ENTITY_SPEED, WIN_WIDTH
+from code.const import ENTITY_SPEED, WIN_WIDTH, PLAYER_KEY_JUMP, PLAYER_KEY_RIGHT, PLAYER_KEY_LEFT
 
 
 class Player(Entity):
@@ -17,13 +17,13 @@ class Player(Entity):
 
     def move(self):
         pressed_key = pygame.key.get_pressed() #vou fazer o personagem se mover
-        if pressed_key[pygame.K_d] and self.rect.centerx >= 0: #se clicar "d" vai acontecer:
+        if pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.centerx >= 0: #se clicar "d" vai acontecer:
             self.rect.centerx += ENTITY_SPEED[self.name]
 
-        if pressed_key[pygame.K_a] and self.rect.centerx >= 0: #se clicar "a" vai acontecer:
+        if pressed_key[PLAYER_KEY_LEFT[self.name]] and self.rect.centerx >= 0: #se clicar "a" vai acontecer:
             self.rect.centerx -= ENTITY_SPEED[self.name]
 
-        if pressed_key[pygame.K_w] and self.on_ground: #vou fazer o personagem pular
+        if pressed_key[PLAYER_KEY_JUMP[self.name]] and self.on_ground: #vou fazer o personagem pular
             self.vel_y = -self.jump_speed               #quando eu apertar "w"
             self.on_ground = False
 

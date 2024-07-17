@@ -1,5 +1,8 @@
 #!/usr/bin/python
 #-*- coding: utf-8 -*-
+import random
+
+from code.Enemy import Enemy
 from code.Player import Player
 from code.background import background
 from code.const import WIN_WIDTH, WIN_HEIGHT
@@ -22,3 +25,8 @@ class EntityFactory:
                 return Player('player2', (55, 550))
             #case 'player1':  # Esse case é do personagem
                 #return Player('player1', position)  # Usar a posição passada como argumento
+            case 'Enemy1':#criando o inimigo 1 e sua posição
+                return Enemy('Enemy1', (WIN_WIDTH + 5, random.randint(0, WIN_HEIGHT)))
+
+            case 'Enemy2':# criando o inimigo 2 e sua posição
+                return Enemy('Enemy2', (WIN_WIDTH + 5, random.randint(0, WIN_HEIGHT)))

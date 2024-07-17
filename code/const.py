@@ -1,4 +1,6 @@
 #C --> CORES
+import pygame
+
 COLOR_ORANGE = (255, 128, 0)
 COLOR_BLACK = (0, 0, 0)
 COLOR_PINK = (200, 10, 100)
@@ -12,7 +14,9 @@ MENU_OPTIONS = ("INICIO",
                 "OPTIONS",
                 "EXIT")
 
-#E  -> ENTITY
+#E  -> ENTITY, EVENT_ENEMY
+EVENT_ENEMY = pygame.USEREVENT + 1
+
 ENTITY_SPEED = {'florestalevel1part0': 0,
                 'florestalevel1part1': 0,
                 'florestalevel1part2': 10,
@@ -22,9 +26,18 @@ ENTITY_SPEED = {'florestalevel1part0': 0,
                 'florestalevel1part6': 0,
                 'florestalevel1part7': 0,
                 'player1': 20,
-                'player2': 20
+                'player2': 20,
+                'Enemy1': 4,
+                'Enemy2': 2
                 }
+PLAYER_KEY_JUMP = {'player1': pygame.K_w,
+                   'player2': pygame.K_UP}
 
+PLAYER_KEY_RIGHT = {'player1': pygame.K_d,
+                   'player2': pygame.K_RIGHT}
+
+PLAYER_KEY_LEFT = {'player1': pygame.K_a,
+                    'player2': pygame.K_LEFT}
 
 
 #W --> TAMANHOS (WIDTH e HEIGHT)

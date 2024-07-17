@@ -7,7 +7,7 @@ from pygame import Surface
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
-from code.const import COLOR_WHITE, MENU_OPTIONS
+from code.const import COLOR_WHITE, MENU_OPTIONS, EVENT_ENEMY
 
 
 class Level:
@@ -22,7 +22,8 @@ class Level:
         self.entity_list.append(EntityFactory.get_entity('player1', (0,0)))
         if menu_option in [MENU_OPTIONS[1], MENU_OPTIONS[2]]:
             self.entity_list.append(EntityFactory.get_entity('player2', (50, 50)))
-
+        pygame.time.set_timer(EVENT_ENEMY, 10000)#tempo em que vai acontecer o evento de criar o enemy
+                                                #em milisegundos
         # Carregar a música fora do loop principal
         pygame.mixer_music.load(f'asset/{self.name}.mp3')
         pygame.mixer_music.play(-1)
@@ -43,6 +44,12 @@ class Level:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
+
+                if event.type == EVENT_ENEMY:
+                    self.entity_list.append(EntityFactory.get_entity('Enemy1', [0,0]))
+
+                if event.type == EVENT_ENEMY:
+                    self.entity_list.append(EntityFactory.get_entity('Enemy2', [0,0]))
             pygame.display.flip()
         pass
 
