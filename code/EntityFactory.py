@@ -26,7 +26,7 @@ class EntityFactory:
             #case 'player1':  # Esse case é do personagem
                 #return Player('player1', position)  # Usar a posição passada como argumento
             case 'Enemy1':#criando o inimigo 1 e sua posição
-                return Enemy('Enemy1', (WIN_WIDTH + 5, random.randint(0, WIN_HEIGHT)))
+                return Enemy('Enemy1', (WIN_WIDTH + 5, 570))
 
             case 'Enemy2':# criando o inimigo 2 e sua posição
-                return Enemy('Enemy2', (WIN_WIDTH + 5, random.randint(0, WIN_HEIGHT)))
+                return Enemy('Enemy2', (WIN_WIDTH + 5, 570))
