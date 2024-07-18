@@ -35,12 +35,18 @@ class Level:
         clock = pygame.time.Clock()  # vou criar o clock para definir o fps
         while True:
             clock.tick(60)  # defini o tempo de rodagem (FPS) em clock.tick{x}, para não passar disso
+
+            #for para desenhar todas as entidades (cuidado para não colocar o que não deve e ficar lento)
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf,
                                  dest=ent.rect)  # aqui eu desenho as entidades ex: background, imagens em geral
-                #self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, 10)) #colocar o cpf na tela do jogo.
-                print(clock.get_fps())
                 ent.move()
+            #texto para ser printado na tela
+            self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, 10)) #colocar o cpf na tela do jogo.
+
+            #atualizar na tela
+            pygame.display.flip()
+
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
@@ -50,7 +56,7 @@ class Level:
                     choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append(EntityFactory.get_entity(choice, [0,0]))
 
-            pygame.display.flip()
+
         pass
 
     def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):

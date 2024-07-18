@@ -10,8 +10,8 @@ class Player(Entity):
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
         # Adicionando atributos para o pulo
-        self.jump_speed = 30  # Velocidade de pulo
-        self.gravity = 5  # Gravidade
+        self.jump_speed = 42  # altura pulo
+        self.gravity = 10  # velocidade da descida (gravidade)
         self.vel_y = 0  # Velocidade vertical
         self.on_ground = True  # Verificação se o player está no chão
 
