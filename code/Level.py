@@ -49,9 +49,9 @@ class Level:
                                  dest=ent.rect)  # aqui eu desenho as entidades ex: background, imagens em geral
                 ent.move()
                 if isinstance(ent, (Player, Enemy)):
-                    shoot = ent.Shoot()
+                    shoot = ent.shoot()
                     if shoot is not None:
-                        self.entity_list.append(ent.shoot())
+                        self.entity_list.append(shoot)
             #texto para ser printado na tela
             self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_WHITE, (10, 10)) #colocar o cpf na tela do jogo.
 

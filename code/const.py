@@ -26,7 +26,9 @@ ENTITY_SPEED = {'florestalevel1part0': 0,
                 'florestalevel1part6': 0,
                 'florestalevel1part7': 0,
                 'player1': 20,
+                'player1Shot': 4,
                 'player2': 20,
+                'player2Shot': 3,
                 'Enemy1': 4,
                 'Enemy2': 2
                 }
@@ -43,7 +45,7 @@ ENTITY_HEALTH = {'florestalevel1part0': 999,
                 'player1': 100,
                 'player1Shot': 1,
                 'player2': 100,
-                'player2shot': 3,
+                'player2Shot': 3,
                 'Enemy1': 50,
                 'Enemy2': 50
                 }
@@ -58,7 +60,7 @@ PLAYER_KEY_LEFT = {'player1': pygame.K_a,
                     'player2': pygame.K_LEFT}
 
 PLAYER_KEY_SHOOT = {'player1': pygame.K_SPACE,
-                    'player2': pygame.KMOD_SHIFT}
+                    'player2': pygame.K_0}
 
 POSITION_INICIO_PLAYER1 = (5, 700 - 215)
 POSITION_INICIO_PLAYER2 = (50, 700 - 215)

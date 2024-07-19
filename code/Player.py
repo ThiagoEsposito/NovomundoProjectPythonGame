@@ -38,10 +38,10 @@ class Player(Entity):
             self.vel_y = 0
             self.on_ground = True
 
-    def Shoot(self):
+    def shoot(self):
         pressed_key = pygame.key.get_pressed()
         if pressed_key[PLAYER_KEY_SHOOT[self.name]]:
-            return PlayerShot(f' {self.name}Shot', position=(self.rect.centerx, self.rect.centery))
+            return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
         else:
             return None
 
