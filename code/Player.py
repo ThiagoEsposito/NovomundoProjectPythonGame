@@ -4,7 +4,8 @@ import pygame.key
 
 from code.Entity import Entity
 from code.PlayerShot import PlayerShot
-from code.const import ENTITY_SPEED, WIN_WIDTH, PLAYER_KEY_JUMP, PLAYER_KEY_RIGHT, PLAYER_KEY_LEFT, PLAYER_KEY_SHOOT
+from code.const import ENTITY_SPEED, WIN_WIDTH, PLAYER_KEY_JUMP, PLAYER_KEY_RIGHT, PLAYER_KEY_LEFT, PLAYER_KEY_SHOOT, \
+    ENTITY_SHOT_DELAY
 
 
 class Player(Entity):
@@ -15,7 +16,7 @@ class Player(Entity):
         self.gravity = 10  # velocidade da descida (gravidade)
         self.vel_y = 0  # Velocidade vertical
         self.on_ground = True  # Verificação se o player está no chão
-
+        self.shot_delay = ENTITY_SHOT_DELAY[self.name]
     def move(self):
         pressed_key = pygame.key.get_pressed() #vou fazer o personagem se mover
         if pressed_key[PLAYER_KEY_RIGHT[self.name]] and self.rect.centerx >= 0: #se clicar "d" vai acontecer:
@@ -39,11 +40,14 @@ class Player(Entity):
             self.on_ground = True
 
     def shoot(self):
-        pressed_key = pygame.key.get_pressed()
-        if pressed_key[PLAYER_KEY_SHOOT[self.name]]:
-            return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx, self.rect.centery))
-        else:
-            return None
+        self.shot_delay -= 1
+        if self.shot_delay == 0:
+            self.shot_delay = ENTITY_SHOT_DELAY[self.name]
+            pressed_key = pygame.key.get_pressed()
+            if pressed_key[PLAYER_KEY_SHOOT[self.name]]:
+                return PlayerShot(name=f'{self.name}Shot', position=(self.rect.centerx - 30, self.rect.centery - 50))
+            else:
+                return None
 
 
         pass

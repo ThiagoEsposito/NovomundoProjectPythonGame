@@ -12,7 +12,7 @@ from code.const import ENTITY_HEALTH
 class Entity(ABC):
     def __init__(self, name: str, position: tuple):
         self.name = name
-        self.surf = pygame.image.load('../Model/asset/' + name + '.png')
+        self.surf = pygame.image.load('./asset/' + name + '.png')
 
         #  self.surf = pygame.image.load('asset/' + name + '.png')
         #self.rect = self.surf.get_rect(topleft=position)  # Usar 'topleft' para definir a posição inicial

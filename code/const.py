@@ -26,11 +26,13 @@ ENTITY_SPEED = {'florestalevel1part0': 0,
                 'florestalevel1part6': 0,
                 'florestalevel1part7': 0,
                 'player1': 20,
-                'player1Shot': 4,
+                'player1Shot': 100,
                 'player2': 20,
-                'player2Shot': 3,
+                'player2Shot': 100,
                 'Enemy1': 4,
-                'Enemy2': 2
+                'Enemy1Shot': 20,
+                'Enemy2': 2,
+                'Enemy2Shot': 20
                 }
 #VIDA = HEALTH
 
@@ -47,8 +49,14 @@ ENTITY_HEALTH = {'florestalevel1part0': 999,
                 'player2': 100,
                 'player2Shot': 3,
                 'Enemy1': 50,
-                'Enemy2': 50
+                'Enemy1Shot': 1,
+                'Enemy2': 50,
+                'Enemy2Shot': 1
                 }
+#intervalo de criação de tiro, PARA PODER ATIRAR (USAR PODER)
+ENTITY_SHOT_DELAY = {'player1': 2,
+                     'player2': 2
+                        }
 
 PLAYER_KEY_JUMP = {'player1': pygame.K_w,
                    'player2': pygame.K_UP}
